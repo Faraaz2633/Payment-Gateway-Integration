@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title> Donations - The Sparks Foundation </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/utils.css">
+    </head>
+    <body>
+        <section>
+            <header>
+                <h2><a href="./index.html" class="logo">Faraz</a></h2>
+                <div class="navigation">
+                  <a href="./index.html">Home</a>
+                  <a href="./donate.html">Donate</a>
+                  <a href="/" class="active">Contact</a>
+                </div>
+              </header>
+        <div class="bg-contact100">
+            <div class="container-contact100">
+                <div class="wrap-contact100">
+                    <div class="contact100-pic js-tilt" data-tilt>
+                        <img src="img/img-01.png" alt="IMG">
+                    </div>
+    
+                    <form id="my-form" class="contact100-form validate-form" action="https://formspree.io/f/xdoylyao"
+                    method="POST">
+                        <span class="contact100-form-title">
+                            Get in touch
+                        </span>
+    
+                        <div class="wrap-input100 validate-input" data-validate = "Name is required">
+                            <input class="input100" type="text" name="name" placeholder="Name">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+    
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="email" placeholder="Email">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+    
+                        <div class="wrap-input100 validate-input" data-validate = "Message is required">
+                            <textarea class="input100" name="message" placeholder="Message"></textarea>
+                            <span class="focus-input100"></span>
+                        </div>
+    
+                        <div class="container-contact100-form-btn">
+                            <button id="my-form-button" class="contact100-form-btn">
+                                Send
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="my-form-status" style="display: none; margin-top: 20px; width: 100%;" class="alert" role="alert">
+                        <!-- A simple info alert—check it out! -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <script>
+            let form = document.getElementById("my-form");
+            
+            async function handleSubmit(event) {
+              event.preventDefault();
+              let status = document.getElementById("my-form-status");
+              let data = new FormData(event.target);
+              fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+              }).then(response => {
+                status.innerHTML = "Thanks for your submission!";
+                status.style.display = 'block';
+                status.classList.add('alert-success')
+                form.reset()
+              }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+                status.style.display = 'block';
+                status.classList.add('alert-danger')
+                status.classList.remove('')
+              });
+            }
+            form.addEventListener("submit", handleSubmit)
+        </script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/c252d9c8b4.js" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+    </html>
